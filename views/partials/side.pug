@@ -1,0 +1,12 @@
+aside.grid-col_3.grid-col_start.side
+	if models
+		ul.goods-menu
+			each model in models
+				li.goods-menu__item(class = (name === 'catalog' && products && products.length && products[0].Model === model.Name ? 'goods-menu__item_active' : ''))
+					a.goods-menu__link(href=`/catalog/${type}/${model.Name}/page/1`)= model.Name
+					if model.subitems
+						ul.goods-menu__toggle.toggle
+							each item in model.subitems
+								li.toggle__item
+									a.goods-menu__link_sub(href=`/catalog/${model.ID}/${item}`) - #{item} Gb
+	include features

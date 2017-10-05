@@ -1,0 +1,103 @@
+@import "../_tools/common"
+@import "../_components/popup"
+
+.profile-navigation
+	margin-bottom: 50px
+	&__link 
+		text-align: center
+		display: block
+		background-color: #444
+		color: #eee
+		cursor: pointer
+		padding: 8px 0
+		border-right: 1px solid #eee
+		transition: background-color .3s ease
+		&:hover, &_active
+			background-color: #222
+
+.orders-table
+	margin-bottom: 50px
+	.title
+		margin-bottom: 20px
+	width: 100%
+	td
+		text-align: center
+		padding: 10px 0
+	thead
+		td
+			background-color: #555
+			color: #fff
+
+.bonus, .purse
+	&__text
+		font-size: 30px
+		text-align: center
+
+.purse
+	&__text
+		margin-bottom: 30px
+	padding-top: 100px
+	padding-bottom: 150px
+
+.progress
+	position: relative
+	width: 400px
+	height: 400px
+	margin: 0 auto
+	&__svg
+		width: 100%
+		height: 100%
+		transform: rotate(90deg)
+	&__circle
+		fill: none
+		stroke-width: 50px
+		&:first-child 
+			stroke: #333
+		&:last-child
+			stroke: $accent-color
+	&__text
+		position: absolute
+		top: 50%
+		left: 0
+		margin-top: -50px
+		width: 100%
+		text-align: center
+		font-size: 100px
+		line-height: 100px
+
+.money-popup
+	.title
+		text-align: center
+	.label
+		color: $foreground-color
+		flex-basis: 50%
+		text-align: left
+	.input
+		flex-basis: 50%
+	&__control
+		display: flex
+		align-items: center
+		margin-bottom: 25px
+	&__account
+		font-size: 23px
+		font-weight: bold
+		margin-bottom: 20px
+		span
+			margin-right: 7px
+	&__note
+		font-size: 12px
+		opacity: .5
+		margin: 15px
+
+.ways-of-pay
+	display: flex
+	justify-content: center
+	&__item
+		margin-right: 10px
+		cursor: pointer
+		svg
+			width: 50px
+			height: 50px
+
+
+

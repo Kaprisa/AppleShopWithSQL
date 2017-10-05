@@ -1,0 +1,40 @@
+$colors: (1: #921ad3, 2: #f53737, 3: #ff9320, 4: #0079ff)
+
+.features
+	&__item
+		transition: background-color .5s ease
+		cursor: pointer
+		padding: 25px 10px
+		padding-left: 40px
+		position: relative
+	svg
+		position: absolute
+		left: 10px
+		width: 20px
+		height: 20px
+		path
+			transition: fill .3s ease
+	&__title
+		display: inline-block
+		transition: color .3s ease
+	&__text
+		font-size: 14px
+		transition: color .3s ease
+	@each $i,$color in $colors
+		&__item:nth-child(#{$i})
+			svg path 
+				fill: $color
+			.features__title
+				color: $color
+			&:hover
+				background-color: $color
+	&__item:hover
+		svg path
+			fill: #fff
+		.features__title, .features__text
+			color: #fff
+
+
+@media only screen and (max-width : 768px)
+	.side
+		display: none

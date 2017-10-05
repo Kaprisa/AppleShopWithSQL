@@ -1,0 +1,36 @@
+.profile-contacts
+	form#profile.form.form_mb(action="/profile/update" method="POST")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="surname") Фамилия
+			input.grid-col_10.input#surname(type="text" name="surname" placeholder="Ваша фамилия")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="name") Имя
+			input.grid-col_10.input#name(type="text" name="name" placeholder="Ваше имя")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="address") Адрес
+			input.grid-col_10.input#address(type="text" name="address" placeholder="Ваш адрес")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="phone") Телефон
+			input.grid-col_10.input#phone(type="text" name="phone" placeholder="Ваш номер телефона")
+		button.btn_small.btn.btn_transparent.btn_center Сохранить
+	form#change-password.form.form_mb(action="/auth/password/change" method="POST")
+		h3.title.title_small Смена пароля
+		.form-group.grid-row
+			label.grid-col_2.label(for="oldPassword") Старый пароль
+			input.grid-col_10.input#oldPassword(type="password" name="oldPassword")
+		.form-group.grid-row
+			label.grid-col_2.label(for="password") Новый пароль
+			input.grid-col_10.input#password(type="password" name="password")
+		.form-group.grid-row
+			label.grid-col_2.label(for="confirmPassword") Подтвердите пароль
+			input.grid-col_10.input#confirmPassword(type="password" name="confirmPassword")
+		button.btn.btn_small.btn_transparent.btn_center Сохранить
+	form#passport.form.form_mb(action="/user/passport/change" method="POST")
+		h3.title.title_small Паспортные данные
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="seria") Серия
+			input.grid-col_10.input#seria(type="text" name="seria")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="num") Номер
+			input.grid-col_10.input#num(type="text" name="num")
+		button.btn.btn_small.btn_transparent.btn_center Сохранить

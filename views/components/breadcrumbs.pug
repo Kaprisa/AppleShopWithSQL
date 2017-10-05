@@ -1,0 +1,9 @@
+ul.breadcrumbs
+	li.breadcrumbs__item
+		a(href="/")
+			include ../../public/images/icons/home.svg
+	//each item in breadcrumbs
+	li.breadcrumbs__item
+		a.breadcrumbs__link(href=`/catalog/${product.Type}/${product.Model}/page/1`)= product.Model
+	li.breadcrumbs__item
+		span.breadcrumbs__link #{product.Model} #{product.Memory} Gb #{product.Color}

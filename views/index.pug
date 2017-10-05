@@ -1,0 +1,36 @@
+extends layout
+
+include mixins/_card
+
+block content
+	include partials/side
+	main.grid-col_9.grid-col_start.index
+		.slider
+			.slider__inner
+				- for (let i = 1; i < 10; i ++) {
+					.slider__item(style=`background-image: url(/images/slider/${i}.jpg)`)
+				- }
+		h2.title.goods__title Лучшие товары	
+		.grid-container
+			each card in products
+				.grid-col_4.card-holder
+					+card(card)
+	.popup.buy-popup
+		.popup__content
+			h3.buy-popup__title.title Купить в один клик
+			img.buy-popup__img(src="/images/products/iPhone6S/iphone6s-gold.jpg")
+			h4.buy-popup__name.title iPhone 6 128Gb Gold
+			span.buy-popup__price #{h.formatPrice(54290)} руб.
+			.grid-row
+				input.grid-col_8.input#order-phone(type="text", placeholder="Введите ваш телефон", name="phone")
+				button.grid-col_4.btn#order Заказать
+			.btn_hide-popup
+
+
+
+
+
+
+
+
+

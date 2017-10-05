@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	main.profile
+		ul.profile-navigation.grid-row
+			li.grid-col_4.profile-navigation__item: a.profile-navigation__link(class=( page === 'contacts' ? 'profile-navigation__link_active' : '') href="/profile/contacts") Контактная информация
+			li.grid-col_4.profile-navigation__item: a.profile-navigation__link(class=( page === 'purse' ? 'profile-navigation__link_active' : '') href="/profile/purse") Кошелек
+			li.grid-col_4.profile-navigation__item: a.profile-navigation__link(class=( page === 'bonus' ? 'profile-navigation__link_active' : '') href="/profile/bonus") Бонусная карта
+			li.grid-col_4.profile-navigation__item: a.profile-navigation__link(class=( page === 'orders' ? 'profile-navigation__link_active' : '') href="/profile/orders") Заказы
+		.profile__holder
+			case page
+				when 'contacts'
+					include profile-tabs/contacts
+				when 'purse'
+					include profile-tabs/purse
+				when 'bonus'
+					include profile-tabs/bonus
+				when 'orders'
+					include profile-tabs/orders
+	include components/money-popup

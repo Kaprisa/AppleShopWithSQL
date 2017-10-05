@@ -1,0 +1,50 @@
+@import "dropdown"
+
+.user
+	@extend .dropdown__holder
+	text-align: right
+	position: relative
+	padding-left: 20px
+	svg
+		margin-right: 5px
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+		left: 0
+		path
+			fill: $foreground-color
+	&__avatar
+		border-radius: 50%
+	&-hearts
+		width: 40px
+		height: 40px
+		position: relative
+		svg
+			width: 40px
+			height: 40px
+			position: absolute
+			top: 50%
+			transform: translateY(-50%)
+			left: 0
+			path
+				fill: $foreground-color
+				transition: fill .3s ease
+			&:hover
+				path
+					fill: #f53737
+		&__count
+			font-size: 12px
+			color: #fff
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%,-50%)
+	&-goods
+		background-color: #17ac1a
+		padding: 15px 30px
+		&__text
+			color: #fff
+		svg
+			margin-right: 5px
+			path
+				fill: #fff

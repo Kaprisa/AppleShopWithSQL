@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	main.employee
+		h2.title Личная страница сотрудника
+		table.table.employee__info
+			tr
+				td Имя:
+				td #{employee.Name}
+			tr
+				td Должность:
+				td #{employee.Position}
+			tr
+				td Заработная плата:
+				td #{h.formatPrice(employee.Salary)} руб.
+		.tabs.employee__tabs
+			ul.tabs-nav
+				li.tabs-nav__item Моя зарплата
+				li.tabs-nav__item.tabs-nav__item_active Мои достижения
+				li.tabs-nav__item Мой график
+			.tabs__item.salary
+				table.table
+					tr
+						td Заработная плата:
+						td #{h.formatPrice(employee.Salary)} руб.
+					tr
+						td Бонусы:
+						td #{h.formatPrice(2000)} руб.
+					tr
+						td Премии:
+						td #{h.formatPrice(3000)} руб.
+				//- span.employee__text Заработная плата: #{h.formatPrice(employee.Salary)} руб.
+				//- span.employee__text Бонусы: 2000 руб.
+				//- span.employee__text Премии: 1000 руб.
+			.tabs__item.achivements.tabs__item_active
+				include components/achivements-list
+			.tabs__item.schedule
+				table.table
+					tr
+						td Пн. - Пт.
+						td 10:00 - 20:00
+					tr
+						td Суб. - Вс.
+						td 10:00 - 22:00

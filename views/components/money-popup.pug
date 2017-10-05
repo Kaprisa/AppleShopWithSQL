@@ -1,0 +1,21 @@
+.popup.money-popup
+	.popup__content
+		h3.title.title_small Пополнение депозита
+		.money-popup__account
+			span У вас на счету:
+			span.text_accent 
+				span.money #{ balance ? h.formatPrice(balance) : 0 }
+				span руб.
+		.money-popup__control
+			label.label(for="deposit") На какую сумму вы хотите внести депозит?
+			input.input.js-number#deposit(type="text" value="")
+		ul.money-popup__ways-of-pay.ways-of-pay
+			li.ways-of-pay__item#visa
+				include ../../public/images/icons/visa.svg
+			li.ways-of-pay__item#mastercard
+				include ../../public/images/icons/mastercard.svg
+			li.ways-of-pay__item#paypal
+				include ../../public/images/icons/paypal.svg
+		p.money-popup__note * стоимость оплаты будет списана с вашего счета в Российских рублях, в связи с чем процессингом может быть удержана дополнительная комиссия
+		button.btn.btn_center#add-money Внести депозит
+		span.btn_hide-popup

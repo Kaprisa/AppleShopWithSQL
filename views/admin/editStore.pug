@@ -1,0 +1,52 @@
+extends layout
+
+include ../mixins/_confirm-popup
+	
+block content
+	main.editor#store-editor.store-editor
+		h2.title.editor__title #{store ? `Редактировать ${store.Name}` : 'Новый магазин'}
+		form.form.editor__form(action=`/store/add/${store ? store.ID : ''}` )
+			.grid-row
+				.grid-col_7
+					.grid-row.form-group
+						label.label.grid-col_3(for="name") Название магазина:
+						input.input.grid-col_9#name(type="text" name="name" value=(store ? store.Name : ''))
+					.grid-row.form-group
+						label.label.grid-col_3(for="phone") Телефон:
+						input.input.grid-col_9#phone(type="text" name="phone" value=(store ? store.Phone : ''))
+					.grid-row.form-group
+						label.label.grid-col_3(for="address") Адрес:
+						input.input.grid-col_9#address(type="text" name="address" value=(store ? store.Address : ''))
+					.grid-row.form-group.grid-row_end
+						label.label.grid-col_1.editor__label_coord(for="lng") Lng:
+						input.input.grid-col_3#lng.js-number(type="text" name="lng" value=(store ? store.Lng : ''))
+						label.label.grid-col_1.editor__label_coord(for="lat") Lat:
+						input.input.grid-col_3.js-number#lat(type="text" name="lat" value=(store ? store.Lat : ''))
+					.grid-row.form-group
+						label.label.grid-col_3 Часы работы:
+						.grid-col_4.editor__time-line.grid-row
+							label.label.grid-col_2 П-П:
+							input.input#weekdays-start.grid-col_5(type="time" name="weekdays-start" value=(store && store.businessHours ? store.businessHours[0].start : ''))
+							input.input#weekdays-end.grid-col_5(type="time" name="weekdays-end" value=(store && store.businessHours ? store.businessHours[0].end : ''))
+						.grid-col_4.editor__time-line.grid-row
+							label.label.grid-col_2 С-В:
+							input.input#weekend-start.grid-col_5(type="time" name="weekend-start" value=(store && store.businessHours ? store.businessHours[1].start : ''))
+							input.input#weekend-end.grid-col_5(type="time" name="weekend-end" value=(store && store.businessHours ? store.businessHours[1].end : ''))
+					.grid-row.form-group
+						label.label.grid-col_3.grid-col_start(for="description") Описание:
+						textarea.grid-col_9.textarea.editor__textarea#description #{store && store.Description ? store.Description : ''}
+					.grid-row
+						button.btn.grid-col_5 Сохранить
+						if store
+							button.btn.btn_red.grid-col_5#confirm-delete(type="button") Удалить
+				.grid-col_5.grid-col_start.editor_right
+					label.editor__load-img(for="photo") Загрузить фото
+						include ../../public/images/icons/file.svg
+						input.input_file#photo(type="file" name="photo" accepts="image/gif, image/jpeg, image/png, image/jpg" hidden)
+					if store
+						img.editor__img(src=`/uploads/${store.Photo}`)
+					else
+						img.editor__img(src=`/images/default/store.jpeg`)
+	if store
+		+confirm("Вы действительно хотите удалить магазин?", 	`/store/${store.ID}`, "DELETE")
+					

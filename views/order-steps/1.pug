@@ -1,0 +1,31 @@
+.shopping-cart.order-inner
+	each product in products
+		.shopping-cart__item.grid-row.cart-product(data-id=product.ID)
+			.grid-col_2.cart-product__img-holder
+				img.cart-product__img(src=(product.Photo ? `/uploads/${product.Photo}.jpeg` : "/public/images/default/phone.jpg"))
+			.cart-product__main.grid-col_6.grid-col_start
+				a.cart-product__name(href=`/product/${product.ID}`)= product.Name
+				button.btn.btn_small.btn_transparent.js-showAcsessoriesPopup(type="button") Добавить аксессуары
+			.card-product__order-info.grid-row.grid-col_5.grid-col_start
+				span.cart-product__price.grid-col_3 Цена:
+					br
+					span.js-cart-product-price #{product.Price}
+					= ' руб.'
+				- const count = product.Count
+				include ../components/counter
+				span.cart-product__total.grid-col_3 Итог:
+					br
+					span.js-cart-product-total #{product.Price * product.Count}
+					= ' руб.'
+				button.btn.btn_small.btn_red.btn_transparent.js-deleteFromBasket Удалить
+	.shopping-cart__total
+		= 'Сумма: '
+		span.js-shopping-cart-total= card.price
+		= ' руб.'
+
+
+
+
+
+			
+

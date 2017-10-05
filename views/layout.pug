@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		meta(charset = 'utf-8')
+		meta(name='viewport', content="initial-scale=1.0, width=device-width")
+		block styles
+			if name
+				link(rel="stylesheet", href=`/dist/css/${name}.css`)
+				if name === 'employee'
+					link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		title Айфонсервис
+	body
+		include partials/header
+		.page.grid-row
+			block content
+		include partials/footer
+		.popup.callback-popup
+			.popup__content
+				h3.callback-popup__title.title Заказать звонок
+				p.callback-popup__text Введите номер телефона и наш менеджер перезвонит вам в течение 
+					strong 15 минут
+					|.
+				.grid-row
+					input.grid-col_8.input#callback-phone(type="text", placeholder="Введите ваш телефон", name="phone")
+					button.grid-col_4.btn#callback Заказать
+				span.btn_hide-popup
+		if !user
+			.popup.user-auth-popup
+				.popup__content
+					include components/social-auth
+					form.form#auth-form
+						h3.title.user-auth-popup__title Регистрация
+						input.input#username(name="username" type="username", placeholder="Ваше имя пользователя")
+						input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+						input.input#password(name="password" type="password", placeholder="Ваш пароль")
+						input.input#confirmPassword(name="confirmPassword" type="password", placeholder="Подтвердите пароль")
+						button.btn.user-auth-popup__btn Войти
+					.btn_hide-popup
+					a.user-auth-popup__link(href="#") Забыли пароль?
+					form.form.user-auth-popup__forgot-form#forgot-form(method="POST", action="/account/forgot")
+						h3.title Восстановление пароля
+						input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+						button.btn.user-auth-popup__btn Восстановить
+		block scripts
+			if name
+				if name === 'contacts'
+					script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+				if (['index', 'catalog', 'product', 'contacts'].includes(name))
+					script(src='/dist/js/common.js')
+				else if (['order', 'profile', 'store', 'employee'].includes(name))
+					script(src='/dist/js/common2.js')
+				script(src=`/dist/js/${name}.js`)

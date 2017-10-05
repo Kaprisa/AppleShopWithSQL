@@ -1,0 +1,39 @@
+.rating
+	&__stars
+		font-size: 30px
+		color: #666
+	&__reviews
+	&__link
+		color: $accent-color
+		text-decoration: underline
+		transition: color .3s ease
+		font-weight: bold
+		&:first-child
+			margin-right: 5px
+		&:last-child
+			margin-left: 5px
+		&:hover
+			color: darken($accent-color, 7%)
+	&__soc
+		border: 1px solid rgba($foreground-color, .5)
+		border-radius: 5px
+		span
+			display: inline-block
+			cursor: pointer
+			margin-top: 5px
+			padding: 3px 10px
+			width: 14px
+			height: 14px
+			&:first-child
+				border-right: 1px solid rgba($foreground-color, .5)	
+			svg path
+				transition: fill .3s ease
+			&:hover
+				svg path
+					fill: $accent-color	
+		.btn-like_hearted
+			svg path
+				fill: $accent-color	
+			&:hover
+				svg path
+					fill: #000

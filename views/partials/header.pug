@@ -1,0 +1,18 @@
+include ../mixins/_list
+
+header.header
+	.grid-row.header__top-line
+		include ../components/logo
+		include ../components/search
+		.grid-col_2.user__holder
+			include ../components/user
+		span.header__phone.phone.grid-col_2 + 7 (495) 99-99-99
+	.grid-row.header__bottom-line
+		if types
+			nav.header__navigation.navigation.grid-col_9
+				ul.navigation__list
+					each type in types
+						li.navigation__item: a.navigation__link(href=`/catalog/${type.Name}/page/1`)= type.Name
+		include ../components/user-goods
+
+

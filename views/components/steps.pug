@@ -1,0 +1,7 @@
+- const steps = [{'text': 'Корзина', 'href': '/order/steps/1'}, { 'text': 'Контактные данные', 'href': '/order/steps/2'}, { 'text': 'Способ получения', 'href': '/order/steps/3'}, { 'text': 'Заказ офомлен', 'href': '/order/steps/4'}]
+ul.order__steps.steps.grid-row
+	each s, index in steps
+		li.steps__item.grid-col_3(class=(index + 1 === step ? 'steps__item_active' : ''))
+			a.steps__link(href=s.href)
+				span.steps__num= index + 1
+				span.steps__text= s.text

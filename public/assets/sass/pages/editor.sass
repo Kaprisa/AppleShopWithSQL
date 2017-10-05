@@ -1,0 +1,71 @@
+@import "../_tools/common"
+@import "../_components/popup"
+
+.editor
+	width: 100%
+	&__load-img
+		margin-left: 50px
+		position: relative
+		padding-left: 30px
+		cursor: pointer
+		font-size: 18px
+		font-style: italic
+		svg
+			position: absolute
+			left: 0
+			top: 50%
+			margin-top: -12px
+			width: 25px
+			height: 25px
+	&_right
+		margin-top: 10px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: center
+		min-height: 600px
+	&__img
+		max-height: 450px
+	&__characteristics
+		margin-top: 30px
+	&-table
+		width: 100%
+		border: 1px solid rgba(#000, .5)
+		border-spacing: 0
+		margin-bottom: 10px
+		border-bottom: none
+		&__head
+			background-color: #ccc
+			color: #000
+			font-weight: bold
+			text-align: center 
+		&__col
+			padding: 5px
+			color: #222
+			font-size: 16px
+			border-bottom: 1px solid rgba(#000, .5)
+			&:first-child
+				width: 30%
+				text-align: right
+				border-right: 1px solid rgba(#000, .5)
+			&-inner
+				display: inline-block
+				box-sizing: border-box
+				padding: 5px
+				width: 50%
+				height: 100%
+				border: 1px solid rgba(#000, .2)
+	&__label_coord
+		margin-right: 10px
+
+.store-editor
+	.editor_right
+		min-height: auto
+
+
+[contenteditable=true]:empty:before 
+	content: attr(placeholder)
+	color: rgba(#000, .5)
+	font-style: italic
+
+				

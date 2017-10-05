@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	main.store
+		h2.store__title.title= store.name
+		.grid-row.store__content
+			.grid-col_5.store__info
+				.store__address
+					strong Адрес:
+					= store.Address
+					a.store__link(href=`/contacts/${store.ID}`) Посмотреть на карте
+				table.store__table
+					tr
+						td Пн. - Пт.
+						td #{store.bussinessWeekday}
+					tr
+						td Суб. - Вс.
+						td #{store.businessWeekend}
+			.grid-col_7
+				img.store__img(src=( store.Photo ? `/uploads/${store.Photo}` : "/images/default/city.jpeg" ))

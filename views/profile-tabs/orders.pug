@@ -1,0 +1,19 @@
+.orders
+	h3.title Ваши заказы
+	table.table.orders-table
+		thead
+			tr
+				td Номер заказа
+				td Дата
+				td Цена
+				//td Оплачено
+				//td Осталось оплатить
+				td Статус
+		tbody
+			each order, index in orders
+				tr
+					td= index + 1
+					td= h.moment(order.Created).format('L')
+					td #{order.Total || 0} руб.
+					//td= order.Total - order.Payed
+					td= order.Status || 'На складе'

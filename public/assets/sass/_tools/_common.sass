@@ -1,0 +1,155 @@
+@import "vars"
+@import "fonts"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	min-height: 100%
+
+body
+	margin: 0
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	color: $foreground-color
+	background-color: $background-color
+	overflow-x: hidden
+	opacity: 1
+
+main
+	width: 100%
+
+h1, h2, h3, h4, h5, h6, p
+	padding: 0
+	margin: 0
+
+img
+	max-width: 100%
+	height: auto
+
+ul
+	padding: 0
+	margin: 0
+	list-style-type: none
+
+a
+	text-decoration: none
+	color: $foreground-color
+	cursor: pointer
+
+form, input, textarea
+	margin: 0
+	padding: 0
+	border: none
+
+svg
+	width: 14px
+	height: 14px
+
+.page
+	padding: 0 10%
+
+@import "grid"
+@import "../_partials/header"
+@import "../_partials/footer"
+@import "../_components/title"
+@import "../_components/button"
+@import "../_components/form"
+
+@media only screen and (max-width : 1200px)
+	.header
+		&__top-line
+			padding: 6px 10px
+			justify-content: center
+			flex-wrap: wrap
+			.logo
+				flex-basis: 45%
+			.user__holder, .phone
+				flex-basis: 27%
+			.user
+				text-align: center
+			.phone
+				text-align: right
+		.search
+			order: 1
+			flex-basis: 80%
+			margin-top: 10px
+
+@media only screen and (max-width : 992px)
+	.header
+		.user-goods
+			flex-basis: 50%
+			font-size: 12px
+			padding: 5px
+
+	.footer
+		&__top-line
+			padding: 10px
+			flex-wrap: wrap
+			justify-content: center
+		.social
+			flex-basis: 30%
+			margin: 0 auto
+		.logo
+			flex-basis: 60%
+			margin: 0 auto
+		.navigation
+			order: 1
+			flex-basis: 100%
+			margin-top: 10px
+
+
+@media only screen and (max-width : 768px)
+	.header
+		&__top-line
+			justify-content: space-between
+			.user__holder
+				flex-basis: 50%
+			.phone
+				display: none
+
+
+@media only screen and (max-width : 480px)
+	.header
+		&__top-line
+			.logo
+				flex-basis: 100%
+				text-align: center
+			.user__holder
+				flex-basis: 100%
+		&__bottom-line
+			flex-wrap: wrap
+			.user-goods, .header__navigation
+				flex-basis: 100%
+				margin-bottom: 5px
+			.navigation__list
+				justify-content: center
+	.footer
+		.navigation__list
+			flex-direction: column
+			text-align: center
+
+

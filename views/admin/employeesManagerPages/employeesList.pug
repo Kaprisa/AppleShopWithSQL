@@ -1,0 +1,8 @@
+ul.employees__list
+	if employees
+		each employee in employees
+			li.employees__item
+				a.employees__link(href=`/admin/employeesManager/employeesEditor/${employee.ID}`)
+					img.employees__img(src=h.getGravatar(employee.Email, 70))
+					span.employees__name= employee.Name
+					span.employees__position= employee.Position

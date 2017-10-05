@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		meta(charset = 'utf-8')
+		meta(name='viewport', content="initial-scale=1.0, width=device-width")
+		style
+			include style.css
+	title Айфонсервис | Восстановление аккаунта
+	body
+		main.reset
+			form.form(method="POST")
+				h2.reset__title Новый пароль
+				input.input#password(type="password" name="password" placeholder="Пароль")
+				input.input#confirmPassword(type="password" name="confirmPassword" placeholder="Подтвердите пароль")
+				input.button(type="submit" value="Сохранить")

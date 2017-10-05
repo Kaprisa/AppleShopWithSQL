@@ -1,0 +1,10 @@
+if pages && pages > 1
+	.grid-row.pagination
+		.grid-col_5.pagination__pages
+			a.pagination__link(href=`/catalog/${type}/${model ? model + '/' : '' }page/${page-1}`) <
+			- for (let i = 1 ; i < pages + 1 ; i ++) {
+				a.pagination__link(class=( i == page ? 'pagination__link_active' : '') href=`/catalog/${type}/${model ? model + '/' : '' }page/${i}`)= i
+			-	}
+			a.pagination__link(href=`/catalog/${type}/${model ? model + '/' : '' }page/${Number(page)+1}`) >
+		.grid-col_3.pagination__info
+			span.pagination__text Страница #{page} из #{pages}

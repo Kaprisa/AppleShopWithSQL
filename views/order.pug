@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	main.order
+		if card && card.price === 0
+			.order__empty Ваша корзина пуста
+		else
+			include components/steps
+			case step 
+				when 1
+					include order-steps/1
+				when 2
+					include order-steps/2
+				when 3
+					include order-steps/3
+				when 4
+					include order-steps/4
+			.grid-row
+				a.btn.btn_prev(href=`/order/steps/${step - 1}`) Предыдущий шаг
+				a.btn.btn_next(href=`/order/steps/${step + 1}`) Следующий шаг
+
+

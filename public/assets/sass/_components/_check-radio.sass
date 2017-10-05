@@ -1,0 +1,32 @@
+.input_radio
+	position: absolute
+	top: 0
+	left: 0
+	visibility: hidden
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 0
+		border-radius: 50%
+	&::before
+		visibility: visible
+		border: 2px solid $accent-color
+		width: 20px
+		height: 20px
+		left: 0
+	&::after
+		visibility: hidden
+		background-color: $accent-color
+		width: 14px
+		height: 14px
+		left: 5px
+		margin-top: 5px
+	&:checked
+		&::after
+			visibility: visible
+
+.label_radio
+	padding-left: 30px
+	position: relative
+
+

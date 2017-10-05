@@ -1,0 +1,49 @@
+@import "../_tools/common"
+@import "../_components/goods-menu"
+@import "../_partials/features"
+@import "../_partials/card"
+@import "../_partials/product-about"
+@import "../_components/counter"
+@import "../_components/rating"
+@import "../_components/breadcrumbs"
+@import "../_components/popup"
+@import "../_components/review"
+
+.product
+	&__title
+		text-align: left
+		font-size: 36px
+		margin-bottom: 35px
+	&__info
+		font-weight: bold
+		margin-bottom: 35px
+		span
+			font-size: 14px
+			display: block
+			color: #999
+		strong
+			color: $foreground-color
+	&__price
+		display: block
+		font-size: 30px
+		color: #20222f
+		font-weight: 300
+		margin-bottom: 90px
+	&__order
+		margin-bottom: 35px
+	&__button
+		align-self: stretch
+
+@media only screen and (max-width : 1200px)
+	.rating, .product__order
+		flex-direction: column
+		margin-bottom: 10px
+	.product__title
+		font-size: 20px
+
+@media only screen and (max-width : 768px)
+	.product-holder
+		flex-basis: 100%
+	
+
+

@@ -1,0 +1,11 @@
+.bonus
+	p.bonus__text Ваша бонусная карта #{BonusCard || 'Простая'}
+	p.bonus__text Ваша скидка #{discount || 0}%
+	.progress
+		- const circleLength = 300 * 3.14
+		- const dasharray = ( percent < 50 ) ? circleLength * (100 - percent) / 100 : circleLength * percent / 100
+		- const dashoffset = percent < 50 ? dasharray - (circleLength - dasharray) : 0
+		svg.progress__svg(viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg")
+			circle.progress__circle(cx="200" cy="200" r="150" stroke-width="50")
+			circle.progress__circle(cx="200" cy="200" r="150" stroke-width="50" stroke-dasharray=dasharray stroke-dashoffset=dashoffset)
+		span.progress__text(title=`Вам осталось набрать ${100-percent}% бонусов для получения следующей карты`) #{percent}%

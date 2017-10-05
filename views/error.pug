@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	.error
+		h2.error__status= status
+		p.error__message= message
+		pre.error__stack!= stackHighlighted

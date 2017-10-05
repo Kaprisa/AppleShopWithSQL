@@ -1,0 +1,24 @@
+.navigation
+	&__list
+		display: flex
+	&__item
+	&__link
+		position: relative
+		font-size: 14px
+		margin-right: 30px
+		padding: 10px 0
+		&::after
+			content: ''
+			position: absolute
+			bottom: 5px
+			left: 50%
+			transform: translateX(-50%)
+			height: 1px
+			width: 1px
+			background-color: $foreground-color
+			transition: transform .5s ease
+		&:hover
+			&:after
+				transform: scaleX(50)
+
+

@@ -1,0 +1,17 @@
+extends layout
+	
+block content
+	main.employee-manager
+		h2.title Управление сотрудниками
+		ul.employee-manager-navigation.grid-row
+			li.grid-col_4.employee-manager-navigation__item: a.employee-manager-navigation__link(class=( page === 'employeesEditor' ? 'employee-manager-navigation__link_active' : '') href="/admin/employeesManager/employeesEditor") Добавление / Обновление сотрудника
+			li.grid-col_4.employee-manager-navigation__item: a.employee-manager-navigation__link(class=( page === 'achivementsEditor' ? 'employee-manager-navigation__link_active' : '') href="/admin/employeesManager/achivementsEditor") Управление достижениями
+			li.grid-col_4.employee-manager-navigation__item: a.employee-manager-navigation__link(class=( page === 'employeesList' ? 'employee-manager-navigation__link_active' : '') href="/admin/employeesManager/employeesList") Все сотрудники
+		.employee-manager__holder
+			case page
+				when 'employeesEditor'
+					include employeesManagerPages/employeesEditor
+				when 'achivementsEditor'
+					include employeesManagerPages/achivementsEditor
+				when 'employeesList'
+					include employeesManagerPages/employeesList

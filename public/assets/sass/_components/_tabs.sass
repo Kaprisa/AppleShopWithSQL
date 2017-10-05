@@ -1,0 +1,19 @@
+.tabs
+	&-nav
+		&__item
+			display: inline-block
+			text-decoration: underline
+			color: $accent-color
+			padding: 10px 15px
+			cursor: pointer
+			&_active
+				border: 1px solid rgba($foreground-color, .15)
+				border-bottom: none
+				font-weight: bold
+				color: $foreground-color
+				text-decoration: none
+	&__item
+		display: none
+		padding: 10px 15px
+		&_active
+			display: block

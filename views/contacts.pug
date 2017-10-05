@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	main.contacts
+		h1.title.contacts__title Обратная связь
+		if store
+			.grid-row.contacts-info
+				.grid-col_3
+					span.contacts-info__title #{store.Name || 'Айфонсервис'}
+					span.contacts-info__content #{store.Address || 'Уфа, пр. Октября, 13а'}
+				.grid-col_3
+					span.contacts-info__title Телефон
+					span.contacts-info__content #{store.Phone || '+7 (490) 99-99-99'}
+				.grid-col_3
+					span.contacts-info__title Режим работы
+					span.contacts-info__content пн-пт: #{store.bussinessWeekday}, сб-вс: #{store.businessWeekend}
+		.contacts__map-holder
+			input.input.contacts__search(type="text" placeholder="Найдите наши магазины на карте" value=(store ? store.Address : ''))
+			#map.contacts__map
+		h2.title.contacts__title.contacts__title_small Написать нам
+		form.contacts__form.form(action="/callback", method="POST")
+			.grid-row.form-group
+				label.label.grid-col_2(for="name") Ваше имя:
+				input.input.grid-col_10(type="text", name="name")
+			.grid-row.form-group
+				label.label.grid-col_2(for="email") Ваш E-Mail:
+				input.input.grid-col_10(type="text", name="email")
+			.grid-row.form-group
+				label.label.grid-col_2.grid-col_start(for="message") Ваш вопрос или сообщение:
+				textarea.textarea.grid-col_10(name="message")
+			.grid-row.grid-row_end
+				button.btn.contacts__button Отправить сообщение
+
+
+

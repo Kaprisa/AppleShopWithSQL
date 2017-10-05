@@ -1,0 +1,108 @@
+extends layout
+include mixins/_card
+
+block content
+	include partials/side
+	if product
+		main.grid-col_9.grid-col_start.product-holder
+			.grid-row
+				include components/breadcrumbs
+			.grid-row.product(data-id=product.ID)
+				.grid-col_7.product__content.grid-col_start
+					h2.product__title.title Apple #{product.Model} #{product.Memory} Gb #{product.Color}
+					.product__info
+						span Модель: 
+							strong #{product.Model}
+						span Наличие: 
+							strong #{product.Count && product.Count > 0 ? 'Есть' : 'Нет'} в наличии
+					span.product__price #{h.formatPrice(product.Price)} руб.
+					.grid-row.product__order(data-id=product.ID)
+						if user && (user.role === 'Admin' || user.role === 'Editor')
+							a.btn.btn_center(href=`/admin/product/edit/${product.ID}`) Редактировать
+						else
+							button.add-to-card.btn.btn_green.grid-col_8.product__button(type="button") Добавить в корзину
+							label.counter.grid-col_3(for="count") Колличество
+								input.counter__input#count(type="text" name="count" value="1")
+								.counter__buttons
+									button#inc(type="button") +
+									button#dec(type="button") -
+					.grid-row.rating
+						.rating__stars(title=`Рейтинг ${rating || 0} из 5 звёзд`)
+							= `★`.repeat(rating || 0)
+							= `☆`.repeat(5 - (rating || 0))
+						.rating__soc
+							span#like.btn-like(class= (like ? 'btn-like_hearted' : ''))
+								include ../public/images/icons/heart.svg
+							span#share
+								include ../public/images/icons/share.svg
+						.rating__reviews
+							a.rating__link(href="#") #{ reviews ? reviews.length : 0 } отзывов
+							span /
+							a.rating__link(href="#") Написать отзыв
+				.grid-col_5
+					img.js-img-showPopup(src=`/uploads/${product.Photo}.jpeg`)
+			.tabs.product-about
+				ul.tabs-nav
+					li.tabs-nav__item.tabs-nav__item_active Характеристики
+					li.tabs-nav__item Описание
+					li.tabs-nav__item Отзывы (#{ reviews ? reviews.length : 0 })
+				.tabs__item.tabs__item_active.product-about__characteristic
+					h3.product-about__title= product.Model
+					table.product-about__table.about-table
+						if product.Color
+							tr.about-table__row
+								td.about-table__col Цвет
+								td.about-table__col= product.Color
+						if product.Memory
+							tr.about-table__row
+								td.about-table__col Память
+								td.about-table__col= product.Memory
+						if product.OS
+							tr.about-table__row
+								td.about-table__col ОС
+								td.about-table__col= product.OS
+						if product.Width
+							tr.about-table__row
+								td.about-table__col Размер
+								td.about-table__col #{product.Width} * #{product.Height}
+				.tabs__item.product-about__description
+						p.product-about__text Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Дорогу города приставка пунктуация живет рыбного своего, которой гор, переписывается бросил они. Всемогущая предупредила правилами свой собрал он последний ручеек.
+				.tabs__item.product-about__reviews
+					if reviews && reviews.length
+						.reviews__holder
+							include components/reviews
+						button.btn#btn-more.btn_center.btn_transparent.btn_small(type="button") Показать больше
+			if recomendations && recomendations.length
+				.title Рекомендуем
+				.grid-container
+					each card in recomendations 
+						.grid-col_4.card-holder
+							+card(card)
+		.popup.js-img-popup
+			.popup__content
+				img(src=`/uploads/${product.Photo}.jpeg`)
+				span.btn_hide-popup
+		.popup.review-popup
+			.popup__content
+				h3.review-popup__title.title Отзыв
+				.review-popup__stars
+					span.star(data-star="5")
+					span.star(data-star="4")
+					span.star(data-star="3")
+					span.star(data-star="2")
+					span.star(data-star="1")
+				form#review-form(action=`/reviews/${product.ID}`)
+					textarea.textarea(placeholder="Ваш отзыв")
+					button.btn.review-popup__btn Отправить отзыв
+				.btn_hide-popup
+		.popup.buy-popup
+			.popup__content
+				h3.buy-popup__title.title Купить в один клик
+				img.buy-popup__img(src="/images/products/iPhone6S/iphone6s-gold.jpg")
+				h4.buy-popup__name.title iPhone 6 128Gb Gold
+				span.buy-popup__price 54290 руб.
+				.grid-row
+					input.grid-col_8.input#order-phone(type="text", placeholder="Введите ваш телефон", name="phone")
+					button.grid-col_4.btn#order Заказать
+				.btn_hide-popup
+

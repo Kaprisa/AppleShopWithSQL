@@ -1,0 +1,32 @@
+extends layout
+
+include mixins/_card
+
+block content
+	include partials/side
+	main.grid-col_9.grid-col_start.catalog
+		h2.title.catalog__title Apple #{hearted ? 'Понравившееся' : type}
+		if !hearted 
+			.grid-row.catalog__tools.grid-row_end
+				.grid-col_4.sort
+					span.sort__title Сортировка:
+					- const sortList = [{'name': 'По умолчанию', 'data': 'created'},{'name': 'По цене', 'data': 'price'},{'name': 'По популярности', 'data': 'stars'}]
+					span.sort__current.dropdown__text(data-sort=sort) По умолчанию 
+					ul.sort__dropdown.dropdown.js-dropdown
+						each item in sortList
+							li.dropdown__item.js-sort-item(data-sort=item.data)= item.name
+		.grid-container#catalog-holder
+			each card in products 
+				.grid-col_4.card-holder
+					+card(card)
+			include components/pagination
+	.popup.buy-popup
+		.popup__content
+			h3.buy-popup__title.title Купить в один клик
+			img.buy-popup__img(src="/images/products/iPhone6S/iphone6s-gold.jpg")
+			h4.buy-popup__name.title iPhone 6 128Gb Gold
+			span.buy-popup__price #{h.formatPrice(54290)} руб.
+			.grid-row
+				input.grid-col_8.input#order-phone(type="text", placeholder="Введите ваш телефон", name="phone")
+				button.grid-col_4.btn#order Заказать
+			.btn_hide-popup

@@ -1,0 +1,59 @@
+.toggle
+	height: 0
+	opacity: 0
+	&_active
+		height: auto
+		opacity: 1
+		animation: height 1s linear
+		position: static
+	&__item
+		padding: 15px 30px
+		display: block
+		transition: background-color .3s ease
+		&:hover, &_active
+			background-color: $accent-color
+			color: #fff
+
+.goods-menu
+	margin-bottom: 140px
+	&__item
+		position: relative
+		&_active
+			.goods-menu__link
+				background-color: $accent-color
+				color: #fff
+			.toggle
+				height: auto
+				opacity: 1
+				animation: height 1s linear
+				position: static
+
+	&__link
+		padding: 15px 30px
+		display: block
+		transition: background-color .3s ease
+		&:hover
+			background-color: $accent-color
+			color: #fff
+			.toggle
+				height: auto
+				opacity: 1
+				animation: height 1s linear
+				position: static
+
+@keyframes height
+	0%
+		height: 50px
+		opacity: 0
+	20%
+		opacity: .3
+		height: 30%
+	50%
+		opacity: .5
+		height: 50%
+	60%
+		height: auto 
+		opacity: .6
+	100%
+		opacity: 1
+

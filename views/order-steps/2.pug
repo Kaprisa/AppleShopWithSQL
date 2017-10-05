@@ -1,0 +1,9 @@
+.profile.order-inner
+	form#order-data.form.form_mb(action="/order/info" method="POST")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="address") Адрес доставки
+			input.grid-col_10.input#address(type="text" value=(userContacts ? userContacts.Address : '') name="address")
+		.form-group.grid-row
+			ladel.grid-col_2.label(for="phone") Телефон
+			input.grid-col_10.input#phone(type="text" name="phone" value=(userContacts ? userContacts.Phone : ''))
+		button.btn.btn_small.btn_transparent.btn_center Сохранить

@@ -1,0 +1,31 @@
+.grid-row
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: center
+	&_start
+		justify-content: flex-start
+	&_center
+		justify-content: center
+	&_end
+		justify-content: flex-end
+
+.grid-container
+	@extend .grid-row
+	flex-wrap: wrap
+
+$percent: 8%
+
+.grid-col
+	flex: 1 1 0
+	@for $i from 1 through 12
+		&_#{$i}
+			flex-basis: $i * $percent
+	&_start
+		align-self: flex-start
+	&_center
+		align-self: center
+	&_end
+		align-self: flex-end
+	&_stretch
+		align-self: stretch

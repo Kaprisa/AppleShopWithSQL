@@ -1,0 +1,8 @@
+mixin confirm(text, action, method)
+	.popup.confirm-popup
+		.popup__content
+			.confirm-popup__text= text
+			form.confirm-popup__form(action=action method=method)
+				.grid-row
+					button.btn.btn_red.grid-col_5.btn_small(type="submit") Да
+					button.btn.btn_green.grid-col_5.btn_small#cancel(type="button") Нет

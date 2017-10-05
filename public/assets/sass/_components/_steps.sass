@@ -1,0 +1,44 @@
+@import '../_components/check-radio'
+.steps
+	width: 100%
+	margin-bottom: 25px
+	&__item
+		text-align: center
+		&_active
+			.steps__num
+				background-color: $accent-color
+				color: #fff
+			.steps__text
+				color: #000
+				font-weight: bold
+	&__num
+		display: block
+		margin: 0 auto
+		width: 30px
+		height: 30px
+		margin-bottom: 10px
+		font-size: 20px
+		border-radius: 50%
+		background-color: rgba($foreground-color, .5)
+		transition: background-color .3s ease		
+.btn_next, .btn_prev
+	margin-bottom: 50px
+
+.get-way
+	display: flex
+	justify-content: center
+	padding: 50px 0
+	svg
+		width: 80px
+		height: 80px
+	&__item
+		display: flex
+		flex-direction: column
+		margin: 0 50px
+		&:first-child
+			svg path
+				fill: #ff9320
+		&:last-child
+			svg path
+				fill: #f53737
+	

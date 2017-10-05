@@ -1,0 +1,34 @@
+@keyframes slide-down
+	0%
+		opacity: 0
+		transform: translate3d(0, -100%, 0)
+		position: absolute
+		top: 50%
+		left: 0
+		right: 0
+	50%
+		opacity: .3
+	100%
+		transform: translate3d(0, 0, 0)
+		position: static
+		opacity: 1
+
+@keyframes slide-up
+	0%
+		opacity: 1
+		height: auto
+	100%
+		height: 0
+		opacity: 0
+		display: none
+
+.slide_down
+	animation-name: slide-down
+	animation-timing-function: cubic-bezier(0,0,0.58,1)
+	animation-duration: 2s
+
+.slide_up
+	overflow: hidden
+	animation-name: slide-up
+	animation-timing-function: ease
+	animation-duration: 2s

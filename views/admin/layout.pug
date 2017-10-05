@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		meta(charset = 'utf-8')
+		meta(name='viewport', content="initial-scale=1.0, width=device-width")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(rel="stylesheet", href=`/dist/css/${name}.css`)
+		title Айфонсервис
+	body
+		include partials/header
+		.page.grid-row
+			block content
+		include partials/footer
+		script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+		script(src=`/dist/js/${name}.js`)

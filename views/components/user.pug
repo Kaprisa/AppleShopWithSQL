@@ -1,0 +1,16 @@
+.user.grid-row
+	if !user
+		include ../../public/images/icons/avatar.svg
+	else
+		img.user__avatar(src=h.getGravatar(user.Email))
+		a.user-hearts(href="/products/hearted")
+			include ../../public/images/icons/heart-t.svg
+			//span.user-hearts__count #{user.hearts ? user.hearts.length : 0}
+	span.user__text.dropdown__text Мой аккаунт 
+	ul.user__dropdown.dropdown
+		if !user
+			li.dropdown__item: a.dropdown__link.js-user-showPopup(href="#") Регистрация
+			li.dropdown__item: a.dropdown__link.js-user-showPopup(href="#") Авторизация
+		else
+			li.dropdown__item: a.dropdown__link(href=(user.role === 'Employee' ? '/employee' : '/profile/contacts')) Профиль
+			li.dropdown__item: a.dropdown__link(href="/logout") Выход

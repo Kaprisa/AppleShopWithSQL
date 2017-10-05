@@ -1,0 +1,6 @@
+mixin assets(css, ...js)
+	block styles
+		link(rel="stylesheet", href=`/dist/css/${css}.css`)
+	block scripts
+		each item in js
+			script(src=`/dist/js/${item}.js`)

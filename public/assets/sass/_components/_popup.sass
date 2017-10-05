@@ -1,0 +1,133 @@
+@import "../animation/fade"
+@import "../animation/slide"
+
+.popup
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 400
+  background-color: rgba($accent-color, .85)
+  &__content
+  	position: absolute
+  	top: 50%
+  	left: 50%
+  	transform: translate(-50%, -50%)
+  	background-color: #fff
+  	padding: 30px 15px
+
+.btn_hide-popup
+	position: absolute
+	top: 10px
+	right: 20px
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 20px
+		height: 3px
+		background-color: #333
+		cursor: pointer
+		transition: color .3s ease
+		&:hover
+			background-color: #000
+	&::before
+		transform: rotate(45deg)
+	&::after
+		transform: rotate(-45deg)
+
+// .callback-popup, .buy-popup, .user-auth-popup, .review-popup, .confirm-popup, .model__popup, .money-popup, .achivements-popup
+// 	.popup__content
+// 		background-color: #fff
+// 		padding: 30px 15px 15px
+// 	&__res
+// 		font-size: 22px
+// 		text-align: center
+
+.dynamic-popup
+	&__content
+		position: absolute
+		top: 35%
+		left: 35%
+		right: 35%	
+		padding: 30px
+		border-radius: 5px
+		background-color: $background-color
+		text-align: center
+
+.buy-popup
+	text-align: center
+	&__img
+		width: 70%
+
+.confirm-popup
+	&__text
+		font-size: 20px
+		margin-bottom: 15px
+
+.user-auth-popup, .review-popup, .model__popup
+	.popup__content
+		width: 40%
+	.input, .textarea
+		display: block
+		font-size: 16px
+		padding: 20px 
+		margin: 0 auto
+		margin-bottom: 15px
+		width: 90%
+		border-radius: 10px
+	&__btn
+		display: block
+		margin: 0 auto
+		margin-bottom: 10px
+	&__link
+		display: block
+		text-align: center
+		font-size: 14px
+	&__auth-form
+		z-index: 100
+	&__forgot-form
+		display: none
+	&__error
+		width: 90%
+		box-sizing: border-box
+		margin: 0 auto
+		margin-bottom: 5px
+		border: 2px solid #f22
+		border-radius: 20px
+		padding: 5px
+		font-size: 14px
+		text-align: center
+
+.user-auth-popup
+	.social
+		text-align: center
+		svg:hover path
+			fill: $accent-color
+
+
+.review-popup
+	&__stars
+		justify-content: center
+		display: flex
+		flex-direction: row-reverse
+		.star
+			&::before
+				content: '★'
+			&:hover, &_active
+				color: $accent-color
+				~ span
+					color: $accent-color
+
+.achivements-popup
+	.popup__content
+		width: 40%
+		display: flex
+		flex-direction: column
+		align-items: center
+
+
+

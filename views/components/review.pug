@@ -1,0 +1,12 @@
+.review.grid-row
+	.grid-col_2.review__right
+		img.review__img(src=h.getGravatar(review.Email))
+		.review__stars
+			= `★`.repeat(review.Rating)
+			= `☆`.repeat(5 - review.Rating)
+	.grid-col_10
+		span.review__name= review.Name || review.Email
+		time.review__time(datetime=review.Created)= h.moment(review.Created).fromNow()
+		p.review__text= review.Text 
+		if user && user.ID === review.UserID
+			button.btn.btn_small.btn_transparent Удалить 

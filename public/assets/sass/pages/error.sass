@@ -1,0 +1,46 @@
+@import "../_tools/common"
+
+.error
+	width: 100%
+	&__status
+		font-size: 50px
+		border-radius: 50%
+		height: 200px
+		width: 200px
+		background-color: #000
+		color: #fff
+		font-weight: bold
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: 0 auto
+		margin-bottom: 50px
+		position: relative
+		&::before, &::after
+			content: ''
+			position: absolute
+			top: 50%
+			margin-top: -5px
+			height: 10px
+			width: 100px
+			background-color: #000	
+		&::before
+			left: -120px
+		&::after
+			right: -120px
+	&__message
+		text-align: center
+		font-weight: 300
+		font-size: 30px
+		margin-bottom: 50px
+		color: #000
+		text-transform: uppercase
+	&__stack
+		border: 1px solid rgba($foreground-color, .5)
+		border-radius: 20px
+		margin: 0 auto
+		padding: 20px
+		margin-bottom: 50px
+		mark
+			background-color: $accent-color
+			color: #fff

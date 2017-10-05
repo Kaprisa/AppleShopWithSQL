@@ -1,0 +1,40 @@
+form.form.employee-editor(action='/employee/edit' method="POST")
+	.form-group.grid-row
+		label.grid-col_2.label Электронная почта
+		input.grid-col_10.input#email(type="text" name="email" value=(employee ? employee.Email : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Имя
+		input.grid-col_10.input#name(type="text" name="name" value=(employee ? employee.FirstName : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Фамилия
+		input.grid-col_10.input#lastName(type="text" name="lastName" value=(employee ? employee.LastName : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Должность
+		input.grid-col_10.input#position(type="text" name="position" value=(employee ? employee.Position : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Телефон
+		input.grid-col_10.input#phone(type="text" name="phone" value=(employee ? employee.Phone : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Заработная плата
+		input.grid-col_10.input#salary.js-number(type="text" name="salary" value=(employee ? employee.Salary : ''))
+	.form-group.grid-row
+		label.grid-col_2.label Опыт работы ( В годах )
+		input.grid-col_10.input.js-number#experience(type="text" name="experience" value=(employee ? employee.Experience : ''))
+	.grid-row
+		.grid-col_8
+			if (!employee)
+				p.employees-editor__text * Перед добавлением нового сотрудника, убедитесь, что он зарегистрирован на сайте
+		div(class=(employee ? 'grid-col_6' : 'grid-col_2'))
+			button.btn(type="submit") Сохранить
+			if employee
+				button.btn.btn_green#show-achivements-popup(type="button") Нагадить
+				button.btn.btn_red#remove-employee(type="button" data-action=`/employee/${employee.ID/remove}`) Удалить
+if employee
+	.popup.achivements-popup
+		.popup__content
+			h3.title.title_small Награждение сотрудника
+			.achivements-search
+				input.input.achivements-search__input(type="text", placeholder="Выберите достижение")
+				.achivements-search__results
+			button.btn.btn_transparent.btn_center#save-employee-achivement(data-action=`/employee/${employee.ID}/achivements/add`) Наградить
+			span.btn_hide-popup

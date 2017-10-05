@@ -1,0 +1,104 @@
+extends layout
+
+include ../mixins/_confirm-popup
+	
+block content
+	main.editor#product-editor
+		h2.title.editor__title #{product ? `Редактировать ${product.Model}` : 'Новый продукт'}
+		form.form.editor__form(action=`/product/add/${product ? product.ID : ''}` )
+			.grid-row
+				.grid-col_7
+					.grid-row.form-group
+						label.label.grid-col_3(for="type") Тип продукта:
+						//input.grid-col_9.input#type(type="text" name="type" value=(product ? product.type : ''))
+						select.select.grid-col_9#productType(name="productType" value=(product ? product.Type : ''))
+							if types
+								each type in types
+									option= type.Name
+					.grid-row.form-group
+						label.label.grid-col_3(for="model") Модель продукта:
+						input.input.grid-col_9#model(type="text" name="model" value=(product ? product.Model : ''))
+						//label.label.grid-col_3(for="model") Модель продукта:
+						//select.select.grid-col_9#model(name="model" value=(product ? product.model : ''))
+							if types 
+								each type in types
+									option= type.Name
+					.grid-row.form-group
+						label.label.grid-col_3(for="price") Цена ( в руб. ):
+						input.input.grid-col_9.js-number#price(type="text" name="price" value=(product ? h.formatPrice(product.Price) : ''))
+					.grid-row.form-group
+						label.label.grid-col_3(for="count") Колличество:
+						input.input.grid-col_9.js-number#count(type="text" name="count" value=(product ? product.Count : ''))
+					.grid-row.form-group
+						label.label.grid-col_3.grid-col_start(for="description") Описание:
+						textarea.grid-col_9.textarea.editor__textarea#description #{product && product.Description ? product.Description : ''}
+					.editor__characteristics
+						h4.title.title_small Характеристики
+						.grid-row
+							table.editor-table
+								thead.editor-table__head
+									td.editor-table__col Название
+									td.editor-table__col Значение
+								tr.editor-table__row
+									td.editor-table__col Цвет
+									td.editor-table__col#color(contenteditable='true') #{product ? product.Color : ''}
+								tr.editor-table__row
+									td.editor-table__col Объём памяти ( в Gb )
+									td.editor-table__col.js-number#memory(contenteditable='true') #{product ? product.Memory : ''}
+					button.btn.btn_center(type="button")#js-show-models-editor Редактор моделей
+				.grid-col_5.editor_right.grid-col_start
+					label.editor__load-img(for="photo") Загрузить фото
+						include ../../public/images/icons/file.svg
+						input.input_file#photo(type="file" name="photo" accepts="image/gif, image/jpeg, image/png, image/jpg" hidden)
+					if product
+						img.editor__img(src=`/uploads/${product.Photo}.jpeg`)
+					else
+						img.editor__img(src=`/images/default/phone.jpeg`)
+					.grid-row
+						button.btn.grid-col_5 Сохранить
+						if product
+							button.btn.btn_red.grid-col_5#confirm-delete(type="button") Удалить
+	if product
+		+confirm("Вы действительно хотите удалить товар?", 	`/product/${product.ID}`, "DELETE")
+	.popup.model__popup
+		.popup__content
+			h3.title.title_small Редактор моделей
+			table.editor-table
+				tr.editor-table__row
+					td.editor-table__col Название
+					td.editor-table__col#modelName(contenteditable=(product ? 'false' : 'true')) #{product ? product.Model : ''}
+				tr.editor-table__row
+					td.editor-table__col Тип
+					td.editor-table__col#type(contenteditable='true') #{product ? product.Type : ''}
+				tr.editor-table__row
+					td.editor-table__col Процессор
+					td.editor-table__col#processor(contenteditable='true') #{product ? product.Processor : ''}
+				tr.editor-table__row
+					td.editor-table__col Операционная система
+					td.editor-table__col#os(contenteditable='true') #{product ? product.OS : ''}
+				tr.editor-table__row
+					td.editor-table__col Размер
+					td.editor-table__col
+						span.editor-table__col-inner.js-number#height(contenteditable='true' placeholder="Высота") #{product ? product.Height : ''}
+						span.editor-table__col-inner.js-number#width(contenteditable='true' placeholder="Ширина") #{product ? product.Width : ''}
+				tr.editor-table__row
+					td.editor-table__col Время работы (в ч.)
+					td.editor-table__col.js-number#workingTime(contenteditable='true') #{product ? product.WorkingTime : ''}
+				tr.editor-table__row
+					td.editor-table__col Камера (в мп.)
+					td.editor-table__col
+						span.editor-table__col-inner.js-number#mainCamera(contenteditable='true' placeholder="Основная") #{product ? product.MainCamera : ''}
+						span.editor-table__col-inner.js-number#frontCamera(contenteditable='true' placeholder="Фронтальная") #{product ? product.FrontCamera : ''}
+				tr.editor-table__row
+					td.editor-table__col Вес
+					td.editor-table__col.js-number#weight(contenteditable='true') #{product ? product.Weight : ''}
+				tr.editor-table__row
+					td.editor-table__col Диагональ экрана
+					td.editor-table__col#screenDiagonal(contenteditable='true') #{product ? product.ScreenDiagonal : ''}
+			.grid-row.grid-row_center
+				button.grid-col_5.btn#js-save-model Сохранить
+				if product
+					button.btn.btn_red.grid-col_5#delete-model(data-action=`/model/${product.Model}`, type="button") Удалить
+			span.btn_hide-popup
+
+

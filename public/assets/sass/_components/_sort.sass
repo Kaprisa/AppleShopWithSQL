@@ -1,0 +1,43 @@
+@import "dropdown"
+
+.sort
+	@extend .dropdown__holder
+	&__title
+		font-weight: bold
+		font-size: 14px
+		margin-right: 15px
+	&__current
+		border: 1px solid rgba($foreground-color, .5)
+		padding: 8px
+		padding-right: 50px
+		font-size: 14px
+		&:after
+			right: 10px
+
+.subsections
+	&__title
+		font-weight: bold
+		font-size: 14px
+		margin-right: 10px
+	&__list
+		display: inline-block
+	&__item
+		display: inline-block
+		text-decoration: underline
+		font-size: 14px
+		font-weight: 300
+		cursor: pointer
+		transition: font-weight .3s ease
+		margin-right: 5px
+		&:hover
+			font-weight: bold
+
+@media only screen and (max-width : 1200px)
+	.sort
+		flex-basis: 50%
+		display: flex
+		flex-direction: column
+
+@media only screen and (max-width : 480px)
+	.sort
+		flex-basis: 100%

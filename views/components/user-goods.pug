@@ -1,0 +1,4 @@
+if user
+	a.user-goods.grid-col_3(href="/order/steps/1")
+		include ../../public/images/icons/shop.svg
+		span.user-goods__text Товаров #{ card ? card.count : 0 } (#{ card ? h.formatPrice(card.price) : 0 } руб.)

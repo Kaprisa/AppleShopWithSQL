@@ -1,0 +1,12 @@
+include ../mixins/_list
+
+footer.footer
+	.footer__top-line.grid-row
+		include ../components/logo
+		nav.footer__navigation.navigation.grid-col_7
+			- let items = [{'name': 'Гарантия', 'href': '#'},{'name': 'Доставка по России', 'href': '#' },{'name': 'Ремонт', 'href': '#' },{'name': 'Скидки', 'href': '#' },{'name': 'Контакты', 'href': '/contacts' }]
+			+list('navigation', items)
+		include ../components/social
+	.footer__bottom-line
+		span.footer__phone.phone + 7 (495) 99-99-99
+		a.footer__link.js-callback-popupShow(href="#") Заказать звонок

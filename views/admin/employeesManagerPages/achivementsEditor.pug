@@ -1,0 +1,20 @@
+.admin-achivements
+	form.form.achivements-editor(action='/achivement/edit' method="POST")
+		.form-group.grid-row
+			label.grid-col_3.label Название
+			input.grid-col_9.input#name(type="text" name="name")
+		.form-group.grid-row
+			label.grid-col_3.label Краткое Описание
+			input.grid-col_9.input#description(type="text" name="description")
+		.form-group.grid-row
+			label.grid-col_3.label Иконка 
+				a.achivements-editor__link(href="https://material.io/icons/" target="_blank") (material-icons)
+			input.grid-col_9.input#icon(type="text" name="icon")
+		.grid-row.grid-row_end
+			button.btn Сохранить
+			if achivement
+				button.btn.btn_center.btn_red#remove-achivement(data-action=`/achivement/${achivement.ID/remove}`) Удалить
+	if achivements
+		.admin-achivements__views
+			h2.title Список достижений
+			include ../../components/achivements-list

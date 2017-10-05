@@ -1,0 +1,16 @@
+mixin listItems(cl, items, dropdown)
+	each item in items
+		- const name = ( item.name ? item.name : item )
+		li(class=`${cl}__item`)
+			if item.href
+				a(class=`${cl}__link` href=item.href)= name
+			else
+				span= name
+			if item.subitems
+				ul(class=`${cl}__${dropdown} ${dropdown}`)
+					+listItems(dropdown, item.subitems)
+
+mixin list(cl, items, dropdown = 'dropdown')
+	ul(class=`${cl}__list`)
+		+listItems(cl, items, dropdown)
+

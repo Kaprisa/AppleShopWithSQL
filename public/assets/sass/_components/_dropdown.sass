@@ -1,0 +1,45 @@
+.dropdown
+	position: absolute
+	visibility: hidden
+	transition: visibility .5s ease
+	width: 100%
+	top: 100%
+	left: 0
+	border: 1px solid rgba($foreground-color, .5)
+	z-index: 100
+	&_small
+		width: 70px
+		left: 35%
+	&__text
+		position: relative
+		padding-right: 14px
+		font-size: 14px
+		&::after
+			content: ''
+			position: absolute
+			right: 0
+			top: 50%
+			margin-top: -6px
+			border: 4px solid $foreground-color
+			border-top-color: transparent
+			border-right-color: transparent
+			transform: rotate(-45deg)
+			transition: border-color .3s ease
+		&:hover::after
+			border-bottom-color: #fff
+			border-left-color: #fff
+	&__item
+		cursor: pointer
+		padding: 5px
+		background-color: #fff
+		border-bottom: 1px solid rgba($foreground-color, .5)
+		transition: font-weight .3s ease
+		&:hover, &_active
+			font-weight: bold
+	&__holder  
+		position: relative
+		cursor: pointer
+		&:hover
+			.dropdown
+				visibility: visible
+
